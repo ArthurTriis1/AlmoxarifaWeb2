@@ -13,6 +13,23 @@ public class Produto {
     private String categoria;
     private String descricao;
 
+    public Produto() {}
+
+    public Produto(int codigo, String nome, String marca, String categoria, String descricao) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.descricao = descricao;
+    }
+
+    public Produto(String nome, String marca, String categoria, String descricao) {
+        this.nome = nome;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.descricao = descricao;
+    }
+
     public int getCodigo() {
         return codigo;
     }

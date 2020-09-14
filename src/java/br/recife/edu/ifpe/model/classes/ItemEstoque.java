@@ -12,6 +12,12 @@ public class ItemEstoque {
     private Produto produto;
     private int quantidade;
 
+    public ItemEstoque(Produto produto,int quantidade) {
+        this.produto = produto;
+        this.codigo = produto.getCodigo();
+        this.quantidade = quantidade;
+    }
+
     public int getCodigo() {
         return codigo;
     }
