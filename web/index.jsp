@@ -10,9 +10,14 @@
     <head>
         <title>Almoxarifado Simples</title>
         <jsp:include page="shared/head-imports.jsp"/>
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <jsp:include page="components/header.jsp"/>
+        <div class="img-wrapper">
+            <h1>Almoxarifado </br> Simples</h1>
+            <img class="img-home" src="assets/home.jpg" alt="home">
+        </div>
         <jsp:include page="/shared/footer-js.jsp"/>
     </body>
 </html>
