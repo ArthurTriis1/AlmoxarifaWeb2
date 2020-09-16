@@ -21,7 +21,9 @@ public class RepositorioFuncionario {
     private RepositorioFuncionario(){
         this.funcionarios = new ArrayList<>();
     }
-    
+
+    private static Integer idCounter = 0;
+
     public static RepositorioFuncionario getCurrentInstance(){
         if(myself == null)
             myself = new RepositorioFuncionario();
@@ -30,6 +32,7 @@ public class RepositorioFuncionario {
     }
     
     public void create(Funcionario f){
+        f.setCodigo(++idCounter);
         this.funcionarios.add(f);
     }
     

@@ -1,6 +1,8 @@
 <%@ page import="br.recife.edu.ifpe.model.classes.Produto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.recife.edu.ifpe.model.repositorios.RepositorioProdutos" %>
+<%@ page import="br.recife.edu.ifpe.model.repositorios.RepositorioFuncionario" %>
+<%@ page import="br.recife.edu.ifpe.model.classes.Funcionario" %>
 <%--
   Created by IntelliJ IDEA.
   User: aluno
@@ -21,14 +23,15 @@
     <div class="row" style="margin: 30px 0;">
         <a
                 class="waves-effect waves-light btn col s12 m4 offset-m4"
-                href="product-register.jsp">
-            Cadastrar Produto
+                href="employee-register.jsp">
+            Cadastrar Funcionario
             <i class="material-icons right">add</i>
         </a>
     </div>
 
+
     <%
-        List<Produto> produtos = RepositorioProdutos.getCurrentInstance().readAll();
+        List<Funcionario> funcionarios = RepositorioFuncionario.getCurrentInstance().readAll();
     %>
 
     <table class="centered highlight responsive-table">
@@ -36,27 +39,25 @@
         <tr>
             <th>Código</th>
             <th>Nome</th>
-            <th>Marca</th>
-            <th>Categoria</th>
+            <th>Departamento</th>
             <th>Ações</th>
         </tr>
         </thead>
         <tbody>
-        <% for (Produto produto: produtos ) { %>
+        <% for (Funcionario funcionario: funcionarios ) { %>
         <tr>
-            <td><%= produto.getCodigo()%></td>
-            <td><%= produto.getNome()%></td>
-            <td><%= produto.getMarca()%></td>
-            <td><%= produto.getCategoria()%></td>
+            <td><%= funcionario.getCodigo()%></td>
+            <td><%= funcionario.getNome()%></td>
+            <td><%= funcionario.getDepartamento()%></td>
             <td>
                 <button
-                        onclick="deleteProduct(<%= produto.getCodigo()%>)"
+                        onclick="deleteEmployee(<%= funcionario.getCodigo()%>)"
                         type="button"
                         class="waves-effect waves-teal btn-flat">
                     <i class="material-icons" style="color: crimson">delete</i>
                 </button>
                 <a
-                        href="ProductServlet?method=edit&codigo=<%= produto.getCodigo()%>"
+                        href="EmployeeServlet?method=edit&codigo=<%= funcionario.getCodigo()%>"
                         class="waves-effect waves-teal btn-flat"
                 >
                     <i class="material-icons" style="color: cadetblue">create</i>
@@ -72,9 +73,9 @@
         window.history.replaceState( null, null, window.location.href );
     }
 
-    const deleteProduct = async (id) => {
-        const response = await axios.delete("ProductServlet?codigo=" + id);
-        document.location.href = "ProductServlet";
+    const deleteEmployee = async (id) => {
+        const response = await axios.delete("EmployeeServlet?codigo=" + id);
+        document.location.href = "EmployeeServlet";
     }
 </script>
 <jsp:include page="/shared/footer-js.jsp"/>

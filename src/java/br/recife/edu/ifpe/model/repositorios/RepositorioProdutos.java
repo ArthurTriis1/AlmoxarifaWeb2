@@ -18,6 +18,8 @@ public class RepositorioProdutos {
     private RepositorioProdutos(){
         this.produtos = new ArrayList<>();
     }
+
+    private static Integer idCounter = 0;
     
     public static RepositorioProdutos getCurrentInstance(){
         if(myself == null)
@@ -27,6 +29,7 @@ public class RepositorioProdutos {
     }
     
     public void create(Produto p){
+        p.setCodigo(++idCounter);
         this.produtos.add(p);
     }
     

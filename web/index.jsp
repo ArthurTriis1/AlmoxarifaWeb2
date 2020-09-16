@@ -13,5 +13,6 @@
     </head>
     <body>
         <jsp:include page="components/header.jsp"/>
+        <jsp:include page="/shared/footer-js.jsp"/>
     </body>
 </html>

@@ -11,6 +11,17 @@ public class Funcionario {
     private String nome;
     private String departamento;
 
+    public Funcionario(int codigo, String nome, String departamento) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.departamento = departamento;
+    }
+
+    public Funcionario(String nome, String departamento) {
+        this.nome = nome;
+        this.departamento = departamento;
+    }
+
     public int getCodigo() {
         return codigo;
     }
