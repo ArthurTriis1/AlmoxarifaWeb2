@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="nav-extended">
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Almoxarifado</a>
+        <a href="/" class="brand-logo">Almoxarifado</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="ProductServlet">Produtos</a></li>

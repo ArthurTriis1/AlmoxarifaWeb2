@@ -22,7 +22,7 @@ public class RepositorioLoteEntrada {
     public static RepositorioLoteEntrada getCurrentInstance(){
         if(myself == null)
             myself = new RepositorioLoteEntrada();
-        
+        //Comentario para aula de git
         return myself;
     }
     
