@@ -1,6 +1,7 @@
 <%@ page import="br.recife.edu.ifpe.model.classes.Produto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.recife.edu.ifpe.model.repositorios.RepositorioProdutos" %>
+<%@ taglib prefix="ifpe" uri="arthur.andrade.web2.customtags" %>
 <%--
   Created by IntelliJ IDEA.
   User: aluno
@@ -17,6 +18,7 @@
 </head>
 <body onload="M.toast({html: ${requestScope.resgisterMsg} })">
 <jsp:include page="/components/header.jsp"/>
+<ifpe:helloWorld/>
 <div class="container">
     <div class="row" style="margin: 30px 0;">
         <a
