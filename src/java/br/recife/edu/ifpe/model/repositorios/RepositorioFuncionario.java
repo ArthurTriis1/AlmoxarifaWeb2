@@ -32,7 +32,7 @@ public class RepositorioFuncionario {
     }
     
     public void create(Funcionario f){
-        f.setCodigo(++idCounter);
+        f.setCodigo(idCounter++);
         this.funcionarios.add(f);
     }
     

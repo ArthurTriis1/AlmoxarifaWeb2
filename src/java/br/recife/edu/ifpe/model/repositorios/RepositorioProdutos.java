@@ -29,7 +29,7 @@ public class RepositorioProdutos {
     }
     
     public void create(Produto p){
-        p.setCodigo(++idCounter);
+        p.setCodigo(idCounter++);
         this.produtos.add(p);
     }
     
