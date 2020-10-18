@@ -1,8 +1,6 @@
-<%@ page import="br.recife.edu.ifpe.model.classes.Produto" %>
-<%@ page import="java.util.List" %>
-<%@ page import="br.recife.edu.ifpe.model.repositorios.RepositorioProdutos" %>
-<%@ page import="br.recife.edu.ifpe.model.repositorios.RepositorioFuncionario" %>
-<%@ page import="br.recife.edu.ifpe.model.classes.Funcionario" %>
+<%@ taglib prefix="ifpe" uri="arthur.andrade.web2.customtags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="br.recife.edu.ifpe.model.DTOs.ItemType" %>
 <%--
   Created by IntelliJ IDEA.
   User: aluno
@@ -29,10 +27,10 @@
         </a>
     </div>
 
+    <ifpe:loadItensTag itemType="${ItemType.FUNCIONARIO}"></ifpe:loadItensTag>
 
-    <%
-        List<Funcionario> funcionarios = RepositorioFuncionario.getCurrentInstance().readAll();
-    %>
+    <ifpe:countTag listCount="${funcionarios}" itemName="funcionarios"></ifpe:countTag>
+
 
     <table class="centered highlight responsive-table">
         <thead>
@@ -44,27 +42,28 @@
         </tr>
         </thead>
         <tbody>
-        <% for (Funcionario funcionario: funcionarios ) { %>
-        <tr>
-            <td><%= funcionario.getCodigo()%></td>
-            <td><%= funcionario.getNome()%></td>
-            <td><%= funcionario.getDepartamento()%></td>
-            <td>
-                <button
-                        onclick="deleteEmployee(<%= funcionario.getCodigo()%>)"
-                        type="button"
-                        class="waves-effect waves-teal btn-flat">
-                    <i class="material-icons" style="color: crimson">delete</i>
-                </button>
-                <a
-                        href="EmployeeServlet?method=edit&codigo=<%= funcionario.getCodigo()%>"
-                        class="waves-effect waves-teal btn-flat"
-                >
-                    <i class="material-icons" style="color: cadetblue">create</i>
-                </a>
-            </td>
-        </tr>
-        <% } %>
+        <c:forEach items="${funcionarios}" var="funcionario">
+            <tr>
+                <td>${funcionario.codigo}</td>
+                <td>${funcionario.nome}</td>
+                <td>${funcionario.departamento}</td>
+                <td>
+                    <button
+                            onclick="deleteEmployee(${funcionario.codigo})"
+                            type="button"
+                            class="waves-effect waves-teal btn-flat">
+                        <i class="material-icons" style="color: crimson">delete</i>
+                    </button>
+                    <a
+                            href="EmployeeServlet?method=edit&codigo=${funcionario.codigo}"
+                            class="waves-effect waves-teal btn-flat"
+                    >
+                        <i class="material-icons" style="color: cadetblue">create</i>
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
+
         </tbody>
     </table>
 </div>

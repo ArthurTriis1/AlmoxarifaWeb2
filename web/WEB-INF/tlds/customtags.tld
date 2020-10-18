@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+<taglib version="2.1"
+        xmlns="http://java.sun.com/xml/ns/javaee"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+
 
     <tlib-version>1.0</tlib-version>
     <short-name>customtags</short-name>
@@ -12,10 +13,41 @@
 
 
     <!-- Invoke 'Generate' action to add tags or functions -->
+
     <tag>
-        <name>helloWorld</name>
-        <tag-class>br.recife.edu.ifpe.customtags.HelloTag</tag-class>
-        <body-content>empty</body-content>
+        <name>countTag</name>
+        <tag-class>br.recife.edu.ifpe.customtags.CountTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>listCount</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.util.List</type>
+        </attribute>
+
+        <attribute>
+            <name>itemName</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+
+
     </tag>
+
+    <tag>
+        <name>loadItensTag</name>
+        <tag-class>br.recife.edu.ifpe.customtags.LoadItensTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>itemType</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>br.recife.edu.ifpe.model.DTOs.ItemType</type>
+        </attribute>
+    </tag>
+
 
 </taglib>

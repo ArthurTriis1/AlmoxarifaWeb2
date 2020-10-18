@@ -2,9 +2,7 @@ package br.recife.edu.ifpe.controller.servlets;
 
 
 import br.recife.edu.ifpe.model.classes.Funcionario;
-import br.recife.edu.ifpe.model.classes.Produto;
 import br.recife.edu.ifpe.model.repositorios.RepositorioFuncionario;
-import br.recife.edu.ifpe.model.repositorios.RepositorioProdutos;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

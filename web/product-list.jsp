@@ -1,7 +1,6 @@
-<%@ page import="br.recife.edu.ifpe.model.classes.Produto" %>
-<%@ page import="java.util.List" %>
-<%@ page import="br.recife.edu.ifpe.model.repositorios.RepositorioProdutos" %>
+<%@ page import="br.recife.edu.ifpe.model.DTOs.ItemType" %>
 <%@ taglib prefix="ifpe" uri="arthur.andrade.web2.customtags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: aluno
@@ -18,7 +17,7 @@
 </head>
 <body onload="M.toast({html: ${requestScope.resgisterMsg} })">
 <jsp:include page="/components/header.jsp"/>
-<ifpe:helloWorld/>
+
 <div class="container">
     <div class="row" style="margin: 30px 0;">
         <a
@@ -29,9 +28,15 @@
         </a>
     </div>
 
-    <%
-        List<Produto> produtos = RepositorioProdutos.getCurrentInstance().readAll();
-    %>
+<%--    <%--%>
+<%--        List<Produto> produtos = RepositorioProdutos.getCurrentInstance().readAll();--%>
+<%--        request.setAttribute("produtos", produtos);--%>
+<%--    %>--%>
+
+    <ifpe:loadItensTag itemType="${ItemType.PRODUTO}"></ifpe:loadItensTag>
+    <ifpe:countTag listCount="${produtos}" itemName="produto"></ifpe:countTag>
+
+
 
     <table class="centered highlight responsive-table">
         <thead>
@@ -44,28 +49,28 @@
         </tr>
         </thead>
         <tbody>
-        <% for (Produto produto: produtos ) { %>
-        <tr>
-            <td><%= produto.getCodigo()%></td>
-            <td><%= produto.getNome()%></td>
-            <td><%= produto.getMarca()%></td>
-            <td><%= produto.getCategoria()%></td>
-            <td>
-                <button
-                        onclick="deleteProduct(<%= produto.getCodigo()%>)"
-                        type="button"
-                        class="waves-effect waves-teal btn-flat">
-                    <i class="material-icons" style="color: crimson">delete</i>
-                </button>
-                <a
-                        href="ProductServlet?method=edit&codigo=<%= produto.getCodigo()%>"
-                        class="waves-effect waves-teal btn-flat"
-                >
-                    <i class="material-icons" style="color: cadetblue">create</i>
-                </a>
-            </td>
-        </tr>
-        <% } %>
+        <c:forEach var="produto" items="${produtos}">
+            <tr>
+                <td>${produto.getCodigo()}</td>
+                <td>${produto.getNome()}</td>
+                <td>${produto.getMarca()}</td>
+                <td>${produto.getCategoria()}</td>
+                <td>
+                    <button
+                            onclick="deleteProduct(${produto.getCodigo()})"
+                            type="button"
+                            class="waves-effect waves-teal btn-flat">
+                        <i class="material-icons" style="color: crimson">delete</i>
+                    </button>
+                    <a
+                            href="ProductServlet?method=edit&codigo=${produto.getCodigo()}"
+                            class="waves-effect waves-teal btn-flat"
+                    >
+                        <i class="material-icons" style="color: cadetblue">create</i>
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
