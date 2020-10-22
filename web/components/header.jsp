@@ -13,6 +13,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="ProductServlet">Produtos</a></li>
             <li><a href="EmployeeServlet">Funcionarios</a></li>
+            <li><a href="input-lot-register.jsp">Registro Lote</a></li>
         </ul>
     </div>
 </nav>

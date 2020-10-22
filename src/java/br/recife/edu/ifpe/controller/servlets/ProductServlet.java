@@ -32,7 +32,7 @@ public class ProductServlet extends HttpServlet {
             repository.create(p);
             ItemEstoque item = new ItemEstoque(p, 0);
             RepositorioEstoque.getCurrentInstance().read().addItem(item);
-            request.setAttribute("resgisterMsg", "'Produto " + p.getNome() +" cadastrado com sucesso'");
+            request.setAttribute("registerMsg", "'Produto " + p.getNome() +" cadastrado com sucesso'");
             request.getRequestDispatcher("product-list.jsp").forward(request, response);
         }
 
@@ -40,7 +40,7 @@ public class ProductServlet extends HttpServlet {
             repository.update(p);
             ItemEstoque item = new ItemEstoque(p, 0);
             RepositorioEstoque.getCurrentInstance().read().addItem(item);
-            request.setAttribute("resgisterMsg", "'Produto " + p.getNome() +" editado com sucesso'");
+            request.setAttribute("registerMsg", "'Produto " + p.getNome() +" editado com sucesso'");
             request.getRequestDispatcher("product-list.jsp").forward(request, response);
         }
 

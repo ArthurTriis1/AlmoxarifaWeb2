@@ -41,6 +41,15 @@ public class ItemEstoque {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+
+    public int addQuantidade(int quantidade){
+        this.quantidade += quantidade;
+        return this.quantidade;
+    }
+
+    public int removeQuantidade(int quantidade){
+        this.quantidade -= quantidade;
+        return this.quantidade;
+    }
     
 }

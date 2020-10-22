@@ -15,7 +15,7 @@
     <title>Produtos</title>
     <jsp:include page="/shared/head-imports.jsp"/>
 </head>
-<body onload="M.toast({html: ${requestScope.resgisterMsg} })">
+<body onload="M.toast({html: ${requestScope.registerMsg} })">
 <jsp:include page="/components/header.jsp"/>
 
 <div class="container">
@@ -27,11 +27,6 @@
             <i class="material-icons right">add</i>
         </a>
     </div>
-
-<%--    <%--%>
-<%--        List<Produto> produtos = RepositorioProdutos.getCurrentInstance().readAll();--%>
-<%--        request.setAttribute("produtos", produtos);--%>
-<%--    %>--%>
 
     <ifpe:loadItensTag itemType="${ItemType.PRODUTO}"></ifpe:loadItensTag>
     <ifpe:countTag listCount="${produtos}" itemName="produto"></ifpe:countTag>
