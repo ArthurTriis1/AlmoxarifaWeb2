@@ -12,9 +12,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "InputLotServlet", urlPatterns = "/InputLotServlet")
 public class InputLotServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+
+        LoteEntrada loteEntrada = RepositorioLoteEntrada.getCurrentInstance().read(codigo);
+
+        String responseJSON = "{"
+                +"\"codigo\":"+loteEntrada.getCodigo()+","+
+                "\"descricao\":\""+loteEntrada.getDescricao()+
+                "\",\"itens\":" +
+                "[";
+
+        for(ItemEntrada item: loteEntrada.getItens()){
+            responseJSON += "{\"codigo\":"+item.getCodigo()+",\"nomeProduto\":\""+item.getProduto().getNome()+"\""
+                    + ",\"quantidade\":"+item.getQuantidade()+"}";
+            if(loteEntrada.getItens().indexOf(item)!=loteEntrada.getItens().size()-1){
+                responseJSON += ",";
+            }
+        }
+
+        responseJSON += "]}";
+
+        response.setContentType("text/plain");
+
+        try(PrintWriter out = response.getWriter()){
+            out.println(responseJSON);
+        }
+
+    }
 
 
     @Override
@@ -50,6 +82,8 @@ public class InputLotServlet extends HttpServlet {
         session.setAttribute("inputRegisterMsg", "Lote de entrada inserido com sucesso");
     }
 
+
+    @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int code = Integer.parseInt(request.getParameter("codigo"));

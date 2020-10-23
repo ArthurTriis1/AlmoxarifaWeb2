@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Produto</title>
+    <title>Cadastro de Funcionario</title>
     <jsp:include page="/shared/head-imports.jsp"/>
 </head>
 <body>

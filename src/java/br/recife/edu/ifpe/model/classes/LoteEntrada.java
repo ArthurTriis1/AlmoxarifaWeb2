@@ -14,6 +14,8 @@ public class LoteEntrada {
     private int codigo;
     private List<ItemEntrada> itens;
     private Date data;
+
+    private static int codeAcumulator = 0;
     /*
     * Neste campo ficarão armazenadas as informações de documentos
     */
@@ -22,6 +24,7 @@ public class LoteEntrada {
     public LoteEntrada(){
         this.itens = new ArrayList<>();
         this.data = new Date();
+        this.codigo = codeAcumulator++;
     }
 
     public int getCodigo() {
@@ -58,6 +61,16 @@ public class LoteEntrada {
     
     public void addItem(ItemEntrada i){
         this.itens.add(i);
+    }
+
+    public int getQuantidadeTotal(){
+        int quant = 0;
+
+        for(ItemEntrada i: itens){
+            quant += i.getQuantidade();
+        }
+
+        return quant;
     }
     
 }

@@ -36,4 +36,14 @@ public class Estoque {
     public void addItem(ItemEstoque i){
         this.itens.add(i);
     }
+
+    public void removeItem(int codigoProduto ){
+       ItemEstoque selectedItem = this.itens.stream()
+                .filter(item -> codigoProduto == item.getCodigo())
+                .findAny()
+                .orElse(null);
+       System.out.println(selectedItem.getProduto().getNome());
+       this.itens.remove(selectedItem);
+    }
+
 }

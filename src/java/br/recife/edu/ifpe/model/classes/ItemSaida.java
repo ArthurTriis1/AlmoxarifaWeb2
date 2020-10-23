@@ -10,6 +10,19 @@ public class ItemSaida {
     private int codigo;
     private Produto produto;
     private int quantidade;
+    private static int codeAcumulator = 0;
+
+    public ItemSaida(Produto produto, int quantidade) {
+        this.produto = produto;
+        this.quantidade = quantidade;
+        this.codigo = codeAcumulator++;
+    }
+
+    public ItemSaida(int codigo, Produto produto, int quantidade) {
+        this.codigo = codigo;
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
 
     public int getCodigo() {
         return codigo;

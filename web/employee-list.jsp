@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Produtos</title>
+    <title>Empregados</title>
     <jsp:include page="/shared/head-imports.jsp"/>
 </head>
 <body onload="M.toast({html: ${requestScope.resgisterMsg} })">

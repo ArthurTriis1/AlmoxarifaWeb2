@@ -31,7 +31,6 @@ public class RepositorioLoteSaida {
     }
     
     public void update(LoteSaida ls){
-        
         for(LoteSaida aux: this.lotes){
             if(aux.getCodigo() == ls.getCodigo()){
                 
