@@ -1,10 +1,8 @@
 package br.recife.edu.ifpe.customtags;
 
 import br.recife.edu.ifpe.model.DTOs.ItemType;
-import br.recife.edu.ifpe.model.classes.Funcionario;
-import br.recife.edu.ifpe.model.classes.Produto;
-import br.recife.edu.ifpe.model.repositorios.RepositorioFuncionario;
-import br.recife.edu.ifpe.model.repositorios.RepositorioProdutos;
+import br.recife.edu.ifpe.model.classes.*;
+import br.recife.edu.ifpe.model.repositorios.*;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
@@ -29,9 +27,25 @@ public class LoadItensTag extends SimpleTagSupport {
                 List<Funcionario> funcionarios = RepositorioFuncionario.getCurrentInstance().readAll();
                 getJspContext().setAttribute("funcionarios", funcionarios);
                 break;
+
             case PRODUTO:
                 List<Produto> produtos = RepositorioProdutos.getCurrentInstance().readAll();
                 getJspContext().setAttribute("produtos", produtos, PageContext.PAGE_SCOPE);
+                break;
+
+            case LOTEENTRADA:
+                List<LoteEntrada> loteEntrada = RepositorioLoteEntrada.getCurrentInstance().readAll();
+                getJspContext().setAttribute("lotes", loteEntrada, PageContext.PAGE_SCOPE);
+                break;
+
+            case LOTESAIDA:
+                List<LoteSaida> loteSaida = RepositorioLoteSaida.getCurrentInstance().readAll();
+                getJspContext().setAttribute("loteSaida", loteSaida, PageContext.PAGE_SCOPE);
+                break;
+
+            case ESTOQUE:
+                Estoque e = RepositorioEstoque.getCurrentInstance().read();
+                getJspContext().setAttribute("estoque", e, PageContext.PAGE_SCOPE);
                 break;
         }
     }

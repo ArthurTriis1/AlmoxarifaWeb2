@@ -46,5 +46,19 @@ public class RepositorioEstoque {
             }
         }
     }
+
+    public void removeItem(int codigoProduto ){
+        ItemEstoque selectedItem = this.read(codigoProduto);
+        this.estoque.get(0).getItens().remove(selectedItem);
+    }
+    
+    public ItemEstoque read(int codigoProduto){
+        for(ItemEstoque i: this.estoque.get(0).getItens()){
+            if(i.getProduto().getCodigo() == codigoProduto){
+                return i;
+            }
+        }
+        return null;
+    }
     
 }

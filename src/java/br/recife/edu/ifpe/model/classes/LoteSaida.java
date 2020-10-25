@@ -14,7 +14,8 @@ public class LoteSaida {
     private int codigo;
     private List<ItemSaida> itens;
     private Date data;
-    private Funcionario responsavel;
+
+    private static int codeAcumulator = 0;
             
     /*
     * Neste campo ficarão armazenadas as informações de documentos
@@ -24,7 +25,10 @@ public class LoteSaida {
     public LoteSaida(){
         this.itens = new ArrayList<>();
         this.data = new Date();
+        this.codigo = codeAcumulator++;
     }
+
+
 
     public int getCodigo() {
         return codigo;
@@ -62,12 +66,13 @@ public class LoteSaida {
         this.itens.add(i);
     }
 
-    public Funcionario getResponsavel() {
-        return responsavel;
-    }
+    public int getQuantidadeTotal(){
+        int quant = 0;
 
-    public void setResponsavel(Funcionario responsavel) {
-        this.responsavel = responsavel;
+        for(ItemSaida i: itens){
+            quant += i.getQuantidade();
+        }
+
+        return quant;
     }
-    
 }
