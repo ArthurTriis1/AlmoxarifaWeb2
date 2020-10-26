@@ -43,21 +43,7 @@ public class ExitLotServlet extends HttpServlet {
 
         LoteSaida loteSaida= RepositorioLoteSaida.getCurrentInstance().read(codigo);
 
-        String responseJSON = "{"
-                +"\"codigo\":"+loteSaida.getCodigo()+","+
-                "\"descricao\":\""+loteSaida.getDescricao()+
-                "\",\"itens\":" +
-                "[";
-
-        for(ItemSaida item: loteSaida.getItens()){
-            responseJSON += "{\"codigo\":"+item.getCodigo()+",\"nomeProduto\":\""+item.getProduto().getNome()+"\""
-                    + ",\"quantidade\":"+item.getQuantidade()+"}";
-            if(loteSaida.getItens().indexOf(item)!=loteSaida.getItens().size()-1){
-                responseJSON += ",";
-            }
-        }
-
-        responseJSON += "]}";
+        String responseJSON = loteSaida.getJson();
 
         response.setContentType("text/plain");
 

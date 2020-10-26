@@ -27,7 +27,7 @@
                     type="number"
                     class="validate"
                     name="codigo"
-                    disabled
+                    readonly="readonly"
                     value="<%= funcionario != null ? funcionario.getCodigo() : ""%>"
             />
             <label for="codigo">Código</label>

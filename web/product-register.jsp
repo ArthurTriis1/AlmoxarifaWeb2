@@ -26,7 +26,7 @@
                     type="number"
                     class="validate"
                     name="codigo"
-                    disabled
+                    readonly="readonly"
                     value="<%= produto != null ? produto.getCodigo() : ""%>"
             />
             <label for="codigo">Código</label>

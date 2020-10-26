@@ -61,7 +61,7 @@
 <div id="modal1" class="modal">
     <div class="modal-content">
         <h4 id="lotName"></h4>
-        <p id="lotDescription"></p>
+<%--        <p id="lotDescription"></p>--%>
         <table class="centered highlight responsive-table">
             <thead>
             <tr>
@@ -95,14 +95,14 @@
         const { data: valueResponse } = await axios.get("InputLotServlet?codigo="+code)
         const finalHtml = valueResponse.itens.reduce((html, lote) =>
            html + "<tr><td>" + lote.codigo + "</td><td>" + lote.nomeProduto + "</td><td>" + lote.quantidade + "</td></tr>", ""
-        )
+        );
         document.getElementById("lotName").innerText = "Lote " + valueResponse.codigo;
-        document.getElementById("lotDescription").innerText = "Descrição: " + valueResponse.descricao;
+       // document.getElementById("lotDescription").innerText = "Descrição: " + valueResponse.descricao;
         document.getElementById("bodyTableLot").innerHTML = finalHtml;
         const elem = document.getElementById('modal1');
         const instance = M.Modal.init(elem, {dismissible: false});
         instance.open();
-    }
+    };
 
 
     document.addEventListener('DOMContentLoaded', function() {

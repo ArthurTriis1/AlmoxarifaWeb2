@@ -5,11 +5,14 @@
  */
 package br.recife.edu.ifpe.model.classes;
 
+import br.recife.edu.ifpe.inter.Lote;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class LoteSaida {
+public class LoteSaida implements Lote {
     
     private int codigo;
     private List<ItemSaida> itens;
@@ -50,6 +53,34 @@ public class LoteSaida {
         return data;
     }
 
+    @Override
+    public String getJson() {
+
+        SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+
+        String responseJSON = "{"
+
+                +"\"quantidadeTotal\":"+this.getQuantidadeTotal()+","
+                +"\"data\":\""+DateFor.format(this.getData())+"\","
+                +"\"entrada\":false,"
+                +"\"codigo\":"+this.getCodigo()+","+
+                "\"descricao\":\""+this.getDescricao()+
+                "\",\"itens\":" +
+                "[";
+
+        for(ItemSaida item: this.getItens()){
+            responseJSON += item.getJson();
+            if(this.getItens().indexOf(item)!=this.getItens().size()-1){
+                responseJSON += ",";
+            }
+        }
+
+        responseJSON += "]}";
+
+        return responseJSON;
+    }
+
     public void setData(Date data) {
         this.data = data;
     }
@@ -74,5 +105,10 @@ public class LoteSaida {
         }
 
         return quant;
+    }
+
+    @Override
+    public int compareTo(Lote o) {
+        return getData().compareTo(o.getData());
     }
 }

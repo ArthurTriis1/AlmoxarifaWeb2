@@ -1,5 +1,6 @@
 package br.recife.edu.ifpe.customtags;
 
+import br.recife.edu.ifpe.inter.Lote;
 import br.recife.edu.ifpe.model.DTOs.ItemType;
 import br.recife.edu.ifpe.model.classes.*;
 import br.recife.edu.ifpe.model.repositorios.*;
@@ -8,6 +9,8 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LoadItensTag extends SimpleTagSupport {
@@ -47,6 +50,23 @@ public class LoadItensTag extends SimpleTagSupport {
                 Estoque e = RepositorioEstoque.getCurrentInstance().read();
                 getJspContext().setAttribute("estoque", e, PageContext.PAGE_SCOPE);
                 break;
+
+            case INVENTARIO:
+                List<Lote> lots = new ArrayList<Lote>();
+                lots.addAll(RepositorioLoteEntrada.getCurrentInstance().readAll());
+                lots.addAll(RepositorioLoteSaida.getCurrentInstance().readAll());
+                Collections.sort(lots);
+                String responseJSON = "[";
+                for(Lote item: lots){
+                    responseJSON += item.getJson();
+                    if(lots.indexOf(item)!=lots.size()-1){
+                        responseJSON += ",";
+                    }
+                }
+                responseJSON += "]";
+                getJspContext().setAttribute("inventario", responseJSON, PageContext.PAGE_SCOPE);
+                break;
+
         }
     }
 }

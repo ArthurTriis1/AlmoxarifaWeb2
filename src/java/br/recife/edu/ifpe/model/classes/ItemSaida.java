@@ -47,5 +47,9 @@ public class ItemSaida {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+
+    public String getJson(){
+        return "{\"codigo\":"+this.getCodigo()+",\"nomeProduto\":\""+this.getProduto().getNome()+"\""
+                + ",\"quantidade\":"+this.getQuantidade()+"}";
+    }
 }

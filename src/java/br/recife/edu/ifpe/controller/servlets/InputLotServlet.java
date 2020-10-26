@@ -24,21 +24,7 @@ public class InputLotServlet extends HttpServlet {
 
         LoteEntrada loteEntrada = RepositorioLoteEntrada.getCurrentInstance().read(codigo);
 
-        String responseJSON = "{"
-                +"\"codigo\":"+loteEntrada.getCodigo()+","+
-                "\"descricao\":\""+loteEntrada.getDescricao()+
-                "\",\"itens\":" +
-                "[";
-
-        for(ItemEntrada item: loteEntrada.getItens()){
-            responseJSON += "{\"codigo\":"+item.getCodigo()+",\"nomeProduto\":\""+item.getProduto().getNome()+"\""
-                    + ",\"quantidade\":"+item.getQuantidade()+"}";
-            if(loteEntrada.getItens().indexOf(item)!=loteEntrada.getItens().size()-1){
-                responseJSON += ",";
-            }
-        }
-
-        responseJSON += "]}";
+        String responseJSON = loteEntrada.getJson();
 
         response.setContentType("text/plain");
 

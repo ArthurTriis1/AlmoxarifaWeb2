@@ -18,6 +18,7 @@
             <li><a href="stock-page.jsp">Estoque</a></li>
             <li><a href="exit-lot-register.jsp">Registrar Saída</a></li>
             <li><a href="exit-lot-list.jsp">Lista de Saídas</a></li>
+            <li><a href="inventory-report.jsp">Relatório</a></li>
         </ul>
     </div>
 </nav>
@@ -30,4 +31,5 @@
     <li><a href="stock-page.jsp">Estoque</a></li>
     <li><a href="exit-lot-register.jsp">Registrar Saída</a></li>
     <li><a href="exit-lot-list.jsp">Lista de Saídas</a></li>
+    <li><a href="inventory-report.jsp">Relatório</a></li>
 </ul>

@@ -37,6 +37,8 @@ public class ProductServlet extends HttpServlet {
         }
 
         else if(method.equals("edit")){
+            int code = Integer.parseInt(request.getParameter("codigo"));
+            p.setCodigo(code);
             repository.update(p);
             ItemEstoque item = new ItemEstoque(p, 0);
             RepositorioEstoque.getCurrentInstance().read().addItem(item);

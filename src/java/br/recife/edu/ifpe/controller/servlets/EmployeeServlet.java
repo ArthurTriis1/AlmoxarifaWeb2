@@ -34,6 +34,8 @@ public class EmployeeServlet extends HttpServlet {
         }
 
         else if(method.equals("edit")){
+            int code = Integer.parseInt(request.getParameter("codigo"));
+            f.setCodigo(code);
             repository.update(f);
             request.setAttribute("resgisterMsg", "'Funcionario " + f.getNome() +" editado com sucesso'");
             request.getRequestDispatcher("employee-list.jsp").forward(request, response);

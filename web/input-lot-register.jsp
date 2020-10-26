@@ -114,14 +114,14 @@
 <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
-    }
+    };
 
     const productInLot = async (method, id) => {
 
         const operation = method ? 'add': 'remove'
         await axios.put('InputLotServlet?method='+ operation + '&codigo=' + id);
         location.reload();
-    }
+    };
 
     const registerLot = async () => {
         try{
@@ -130,13 +130,13 @@
         }catch (e) {
             location.reload();
         }
-    }
+    };
 
     const invokeToast = () => {
         if('${sessionScope.inputRegisterMsg}'){
             M.toast({html: '${sessionScope.inputRegisterMsg}'})
         }
-    }
+    };
 </script>
 <jsp:include page="/shared/footer-js.jsp"/>
 <% session.removeAttribute("inputRegisterMsg"); %>

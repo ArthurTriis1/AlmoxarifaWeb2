@@ -6,7 +6,8 @@ public enum ItemType {
     FUNCIONARIO(2),
     LOTEENTRADA(3),
     LOTESAIDA(4),
-    ESTOQUE(5);
+    ESTOQUE(5),
+    INVENTARIO(6);
 
     private final int value;
     ItemType(int optionValue){
